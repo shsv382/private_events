@@ -6,7 +6,6 @@ header {
 	height: 20px;
 	background-color: #eee;
 	box-shadow: 0 2px 2px 2px #ccc;
-	overflow: hidden;
 	color: #333;
 }
 
@@ -34,4 +33,12 @@ header {
 	float: right;
 	max-width: 60%;
 	height: 100%;
+}
+
+.dropdown-menu {
+	display: block;
+}
+
+.hidden {
+	display: none;
 }

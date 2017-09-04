@@ -3,6 +3,17 @@
 		<ul class="nav">
 			<% if signed_in? %>
 			<li><%= link_to current_user.name, current_user, class: "strong" %></li>
+			<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Account <b class="caret"></b>
+                </a>
+                  <ul class="dropdown-menu hidden">
+<li><%= link_to "Создать событие", new_event_path, class: "delete_user" %></li>
+<li><%= link_to "Другие пользователи", users_path, class: "delete_user" %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Удалить пользователя", @user, method: :delete, class: "delete_user" %></li>
+                  </ul>
+                </li>
 			<li><%= link_to "Sign out", signout_path %></li>
 			<% else %>
 			<li><%= link_to "Sign in", signin_path %></li>
@@ -13,5 +24,12 @@
 	<div class="logo brend">
 		<%= link_to "Private_Events", root_path %>
 	</div>
-	
+<script>    
+	var dropdown_toggle = document.getElementsByClassName("dropdown")[0];
+    var main_menu = document.getElementsByClassName("dropdown-menu")[0];
+    
+    main_menu.onmouseover = dropdown_toggle.onmouseover = function(e) {
+        main_menu.classList.toggle("hidden");     
+    }; 
+</script>
 </header>
