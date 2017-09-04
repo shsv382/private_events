@@ -68,3 +68,6 @@ gem 'bootstrap-sass'
 # Pagination
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+
+# Fake users creator
+gem 'faker'

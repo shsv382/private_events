@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События:</h3>
+		<% Event.find_each do |event| %>
+			<div class="col-md-8 col-md-offset-2 col-xs-12 event
+		<%= "upcoming_event" if event.date > Time.now %>
+			"> 
+				<strong><%= event.name %></strong>
+				<span class="date">at <%= event.date %></span>
+			</div>
+		<% end %>
+
+
+	</div>
+</div>

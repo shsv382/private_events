@@ -9,6 +9,7 @@ class User < ApplicationRecord
 				uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, length: { in: 6..16 }, confirmation: true
+	has_many :created_events, class_name: "Event", foreign_key: "creator_id"
 
 	def User.new_remember_token
 	  SecureRandom.urlsafe_base64
