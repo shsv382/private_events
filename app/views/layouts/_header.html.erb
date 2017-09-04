@@ -1,0 +1,17 @@
+<header class="navbar">
+	<nav class="navbar-inner">
+		<ul class="nav">
+			<% if signed_in? %>
+			<li><%= link_to current_user.name, current_user, class: "strong" %></li>
+			<li><%= link_to "Sign out", signout_path %></li>
+			<% else %>
+			<li><%= link_to "Sign in", signin_path %></li>
+			<li><%= link_to "Sign up", signup_path %></li>
+			<% end %>				
+		</ul>
+	</nav>
+	<div class="logo brend">
+		<%= link_to "Private_Events", root_path %>
+	</div>
+	
+</header>

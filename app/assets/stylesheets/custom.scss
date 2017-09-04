@@ -1,0 +1,27 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+a {
+	color: #f50;
+}
+
+.container {
+	margin: 50px auto;
+}
+
+.nav {
+	padding: 3px;
+	& > li {
+		display: inline-block;
+	}
+}
+
+.nav > li > a {
+	height: 100%;
+	border: none;
+	border-radius: 7px;
+	&:hover {
+		color: #fff;
+		background-color: #f50;
+	}
+}

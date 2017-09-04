@@ -1,0 +1,7 @@
+<h1>Это страница пользователя <br><strong><%= @user.name %></strong></h1>
+<h5>Вы можете написать ему на email 
+	<a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+	<br>
+	<br>
+	<%= link_to "Удалить пользователя", @user, method: :delete, class: "delete_user" %>
+</h5>
