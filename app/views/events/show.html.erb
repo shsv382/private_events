@@ -8,11 +8,14 @@
 <% if @event.attendees.exists? %>
 <div class="container">
 	<div class="row">
-		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События пользователя:</h3>
+		<h3 class="col-md-8 col-md-offset-2 col-xs-12">Участники события:</h3>
+		<div class="col-md-8 col-md-offset-2 col-xs-12 event upcoming_event">
+			<strong><%= link_to @event.creator.name, @event.creator %></strong>
+		</div>
 		<% attendees = @event.attendees %>
 		<% attendees.each do |user| %>
 			<div class="col-md-8 col-md-offset-2 col-xs-12 event">
-				<strong><%= user.name %></strong>
+				<strong><%= link_to user.name, user %></strong>
 			</div>
 		<% end %>
 

@@ -5,7 +5,9 @@
 			<div class="col-md-8 col-md-offset-2 col-xs-12 event
 		<%= "upcoming_event" if event.date > Time.now %>
 			"> 
-				<strong><%= event.name %></strong>
+				<strong><%= link_to event.name, event %>
+					(<%= event.attendees.count + 1 %> участников)
+				</strong>
 				<span class="date">at <%= event.date %></span>
 			</div>
 		<% end %>
