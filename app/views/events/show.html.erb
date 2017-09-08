@@ -1,2 +1,24 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1>Это страница события <br><strong><%= @event.name %></strong></h1>
+<h5>Создатель - <strong><%= @event.creator.name %></strong>
+	<br>
+	<br>
+	<%= link_to "Создать свое событие", new_event_path, class: "delete_user" %> 
+</h5>
+
+<% if @event.attendees.exists? %>
+<div class="container">
+	<div class="row">
+		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События пользователя:</h3>
+		<% attendees = @event.attendees %>
+		<% attendees.each do |user| %>
+			<div class="col-md-8 col-md-offset-2 col-xs-12 event">
+				<strong><%= user.name %></strong>
+			</div>
+		<% end %>
+
+<% else %>
+		<h3 class="col-md-8 col-md-offset-2 col-xs-12">В событии пока никто не участвует</h3>
+
+	</div>
+</div>
+<% end %>

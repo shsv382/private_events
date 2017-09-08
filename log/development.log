@@ -8488,3 +8488,208 @@ Processing by EventsController#new as HTML
 Completed 200 OK in 84ms (Views: 79.2ms | ActiveRecord: 0.2ms)
 
 
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" ORDER BY "events"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateEventAttendings (20170908160157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "event_attendings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_attendee_id" integer, "attended_event_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_event_attendings_on_event_attendee_id" ON "event_attendings" ("event_attendee_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_event_attendings_on_event_attendee_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_event_attendings_on_event_attendee_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_event_attendings_on_attended_event_id" ON "event_attendings" ("attended_event_id")[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170908160157"]]
+  [1m[35m (19.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_event_attendings_on_attended_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_event_attendings_on_attended_event_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_event_attendings_on_event_attendee_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_event_attendings_on_event_attendee_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_events_on_creator_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_events_on_creator_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_name' AND type='index'
+[0m
+Started GET "/events/new" for 127.0.0.1 at 2017-09-08 20:12:14 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_event_create_form.html.erb (889.8ms)
+  Rendered events/new.html.erb within layouts/application (903.0ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2eb3da4d5009d8d570bd3804890a83fd027c179c"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (38.7ms)
+Completed 200 OK in 2459ms (Views: 2383.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/6" for 127.0.0.1 at 2017-09-08 20:12:20 +0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (7.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mEvent Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "events" WHERE "events"."creator_id" = ? LIMIT ?[0m  [["creator_id", 6], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."creator_id" = ? ORDER BY "events"."date" DESC[0m  [["creator_id", 6]]
+  Rendered users/show.html.erb within layouts/application (91.3ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2eb3da4d5009d8d570bd3804890a83fd027c179c"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.6ms)
+Completed 200 OK in 189ms (Views: 159.2ms | ActiveRecord: 8.7ms)
+
+
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ?[0m  [["attended_event_id", 10]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" INNER JOIN "event_attendings" ON "events"."id" = "event_attendings"."attended_event_id" WHERE "event_attendings"."event_attendee_id" = ?[0m  [["event_attendee_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "event_attendings" ("event_attendee_id", "attended_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_attendee_id", 10], ["attended_event_id", 10], ["created_at", "2017-09-08 16:14:37.490065"], ["updated_at", "2017-09-08 16:14:37.490065"]]
+  [1m[35m (84.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "event_attendings" ("event_attendee_id", "attended_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_attendee_id", 11], ["attended_event_id", 10], ["created_at", "2017-09-08 16:14:46.671007"], ["updated_at", "2017-09-08 16:14:46.671007"]]
+  [1m[35m (74.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "event_attendings" ("event_attendee_id", "attended_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_attendee_id", 12], ["attended_event_id", 10], ["created_at", "2017-09-08 16:14:51.548611"], ["updated_at", "2017-09-08 16:14:51.548611"]]
+  [1m[35m (22.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ?[0m  [["attended_event_id", 10]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/events/6" for 127.0.0.1 at 2017-09-08 20:22:07 +0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? LIMIT ?[0m  [["attended_event_id", 6], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (50.0ms)
+  Rendered layouts/_shim.html.erb (1.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2eb3da4d5009d8d570bd3804890a83fd027c179c"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (19.0ms)
+Completed 200 OK in 173ms (Views: 138.0ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/events/10" for 127.0.0.1 at 2017-09-08 20:22:12 +0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? LIMIT ?[0m  [["attended_event_id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? ORDER BY "users"."date" DESC[0m  [["attended_event_id", 10]]
+  Rendered events/show.html.erb within layouts/application (36.9ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 4.9ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: users.date: SELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? ORDER BY "users"."date" DESC):
+    10: 	<div class="row">
+    11: 		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События пользователя:</h3>
+    12: 		<% attendees = @event.attendees.order(date: :desc) %>
+    13: 		<% attendees.each do |user| %>
+    14: 			<div class="col-md-8 col-md-offset-2 col-xs-12 event">
+    15: 				<strong><%= user.name %></strong>
+    16: 			</div>
+  
+app/views/events/show.html.erb:13:in `_app_views_events_show_html_erb___908408324767690497_69956674073400'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.0ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ?[0m  [["attended_event_id", 10]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? ORDER BY "users"."date" DESC[0m  [["attended_event_id", 10]]
+Started GET "/events/10" for 127.0.0.1 at 2017-09-08 20:23:32 +0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? LIMIT ?[0m  [["attended_event_id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ?[0m  [["attended_event_id", 10]]
+  Rendered events/show.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2eb3da4d5009d8d570bd3804890a83fd027c179c"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.5ms)
+Completed 200 OK in 154ms (Views: 146.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/events/10" for 127.0.0.1 at 2017-09-08 20:24:29 +0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? LIMIT ?[0m  [["attended_event_id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ?[0m  [["attended_event_id", 10]]
+  Rendered events/show.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2eb3da4d5009d8d570bd3804890a83fd027c179c"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.0ms)
+Completed 200 OK in 70ms (Views: 64.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/events/10" for 127.0.0.1 at 2017-09-08 20:24:47 +0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ? LIMIT ?[0m  [["attended_event_id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "event_attendings" ON "users"."id" = "event_attendings"."event_attendee_id" WHERE "event_attendings"."attended_event_id" = ?[0m  [["attended_event_id", 10]]
+  Rendered events/show.html.erb within layouts/application (14.7ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "2eb3da4d5009d8d570bd3804890a83fd027c179c"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (4.5ms)
+Completed 200 OK in 71ms (Views: 65.5ms | ActiveRecord: 2.9ms)
+
+
