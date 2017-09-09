@@ -1,10 +1,15 @@
 <div class="container">
 	<div class="row">
-		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События:</h3>
-		<% Event.find_each do |event| %>
-			<div class="col-md-8 col-md-offset-2 col-xs-12 event
-		<%= "upcoming_event" if event.date > Time.now %>
-			"> 
+		<h3  class="col-xs-6 col-md-5 col-md-offset-2">События:</h3>
+		<div class="col-xs-6 col-md-5 col-md-offset-2"
+		style="height: 50px;">
+			<%= check_box_tag(:upcoming) %>
+			<%= label_tag(:upcoming, "Только предстоящие") %>
+		</div>
+	</div>
+	<div class="row">	
+		<% Event.upcoming.each do |event| %>
+		<div class="col-xs-12 col-md-8 col-md-offset-2 event upcoming_event"> 
 				<strong><%= link_to event.name, event %>
 					(<%= event.attendees.count + 1 %> участников)
 				</strong>
@@ -12,6 +17,25 @@
 			</div>
 		<% end %>
 
+		<% Event.past.each do |event| %>
+		<div class="col-xs-12 col-md-8 col-md-offset-2 event past_event"> 
+				<strong><%= link_to event.name, event %>
+					(<%= event.attendees.count + 1 %> участников)
+				</strong>
+				<span class="date">at <%= event.date %></span>
+			</div>
+		<% end %>
+
+		<script>
+			upcoming.onclick = function(e) {
+				if (upcoming.checked == true) {
+					$(".past_event").hide();
+				}
+				else {
+					$(".past_event").show();
+				}
+			}
+		</script>
 
 	</div>
 </div>
