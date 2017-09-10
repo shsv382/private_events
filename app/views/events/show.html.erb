@@ -2,7 +2,7 @@
 <h5>Создатель - <strong><%= @event.creator.name %></strong>
 	<br>
 	<br>
-	<%= link_to "Создать свое событие", new_event_path, class: "delete_user" %> 
+	<%= link_to "Создать свое событие", new_event_path, class: "delete_user" %>   
 </h5>
 
 <% if @event.attendees.exists? %>

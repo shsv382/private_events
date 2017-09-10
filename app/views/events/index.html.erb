@@ -1,30 +1,52 @@
-<div class="container">
 	<div class="row">
-		<h3  class="col-xs-6 col-md-5 col-md-offset-2">События:</h3>
-		<div class="col-xs-6 col-md-5 col-md-offset-2"
+		<h3  class="col-xs-6 col-md-5 col-md-offset-1">События:</h3>
+		<div class="col-xs-6 col-md-5 col-md-offset-1"
 		style="height: 50px;">
 			<%= check_box_tag(:upcoming) %>
 			<%= label_tag(:upcoming, "Только предстоящие") %>
 		</div>
 	</div>
-	<div class="row">	
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+		<div class="container" style="margin: 0 auto">
+		
+
 		<% Event.upcoming.each do |event| %>
-		<div class="col-xs-12 col-md-8 col-md-offset-2 event upcoming_event"> 
+		<div class="row">
+			<div class="col-xs-12 col-md-5 col-md-offset-1 event upcoming_event"> 
 				<strong><%= link_to event.name, event %>
 					(<%= event.attendees.count + 1 %> участников)
 				</strong>
 				<span class="date">at <%= event.date %></span>
+			</div>
 			</div>
 		<% end %>
 
+		
+		</div>
+		</div>
+
+		<div class="col-xs-12 col-md-6">
+		<div class="container" style="margin: 0 auto">
+		
+
+
 		<% Event.past.each do |event| %>
-		<div class="col-xs-12 col-md-8 col-md-offset-2 event past_event"> 
+		<div class="row">
+			<div class="col-xs-12 col-md-5 col-md-offset-1 event past_event"> 
 				<strong><%= link_to event.name, event %>
 					(<%= event.attendees.count + 1 %> участников)
 				</strong>
 				<span class="date">at <%= event.date %></span>
 			</div>
+		</div>	
 		<% end %>
+
+		
+		</div>
+		</div>
+
+
 
 		<script>
 			upcoming.onclick = function(e) {
@@ -34,8 +56,8 @@
 				else {
 					$(".past_event").show();
 				}
+				$(".upcoming_event").toggleClass("col-md-12");
 			}
 		</script>
 
 	</div>
-</div>

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :signed_in?, only: [:invite]
+  
   def index
 
   end
@@ -11,12 +13,12 @@ class EventsController < ApplicationController
   	@event = Event.new(event_params)
   	@event.creator_id = current_user.id
   	if @event.save
-		flash[:success] = "Событие создано!"
-		redirect_to current_user
-	else
-		flash.now[:error] = "Неправильные данные!"
-		render :new
-	end
+  		flash[:success] = "Событие создано!"
+  		redirect_to current_user
+  	else
+  		flash.now[:error] = "Неправильные данные!"
+  		render :new
+  	end
   end
 
   def show
