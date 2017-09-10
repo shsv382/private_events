@@ -27,7 +27,28 @@ form {
 	}
 }
 
+form.invite {
+	display: inline;
+	& > input {
+		width: 250px;
+		display: inline;
+		text-align: center;
+	}
+	
+	& > input[name="commit"] {
+		background-color: #f50;
+		color: #fff;
+		height: 2.2em;
+		border: none;
+		border-radius: 5px;
+	}
+}
+
 strong, .strong {
 	font-weight: bold;
 	color: #f50;
+}
+
+.created {
+	box-shadow: 2px 2px 2px 2px #fa7;
 }

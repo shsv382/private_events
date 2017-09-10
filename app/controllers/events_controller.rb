@@ -25,9 +25,26 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def invite
+    invited_user = User.find_by_name(params[:name])
+    @event = Event.find(params[:id])
+    if invited_user && current_user == @event.creator
+      @event.attendees << invited_user
+      flash[:success] = "Пользователь #{invited_user.name} приглашен!"
+      redirect_to @event
+    else
+      flash.now[:error] = "Нет такого пользователя"
+      render :show
+    end
+  end
+
   private
   def event_params
   	params.require(:event).permit(:name, :location, :date)
+  end
+
+  def is_creator? event
+    current_user == event.creator
   end
 
 end

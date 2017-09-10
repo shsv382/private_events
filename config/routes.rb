@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 	get 'signup' => "users#new"
 
 	resources :sessions, only: [:new, :create, :destroy]
-	get 'signin' => "sessions#new"
+	get 'signin'   => "sessions#new"
 	get 'sessions' => "sessions#new"
-	get 'signout' => "sessions#destroy"
+	get 'signout'  => "sessions#destroy"
+	post 'invite'   => "events#invite"
 
 end

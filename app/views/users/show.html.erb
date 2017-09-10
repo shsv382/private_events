@@ -15,8 +15,28 @@
 		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События пользователя:</h3>
 		<% events = @user.created_events.order(date: :desc) %>
 		<% events.each do |event| %>
+			<div class="col-md-8 col-md-offset-2 col-xs-12 event created
+		<%= "upcoming_event" if event.date > Time.now %> 
+			">
+				<strong><%= link_to event.name, event %> (<%= event.attendees.count + 1 %> участников)</strong> at <%= event.date %>
+			</div>
+		<% end %>
+
+<% else %>
+		<h3 class="col-md-8 col-md-offset-2 col-xs-12">У пользователя нет событий</h3>
+
+	</div>
+</div>
+<% end %>
+
+<% if @user.attended_events.exists? %>
+<div class="container">
+	<div class="row">
+		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События, в которых пользователь участвует:</h3>
+		<% events = @user.attended_events.order(date: :desc) %>
+		<% events.each do |event| %>
 			<div class="col-md-8 col-md-offset-2 col-xs-12 event
-		<%= "upcoming_event" if event.date > Time.now %>
+		<%= "upcoming_event" if event.date > Time.now %> 
 			">
 				<strong><%= link_to event.name, event %> (<%= event.attendees.count + 1 %> участников)</strong> at <%= event.date %>
 			</div>

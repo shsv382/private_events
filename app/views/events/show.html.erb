@@ -1,17 +1,33 @@
 <h1>Это страница события <br><strong><%= @event.name %></strong></h1>
-<h5>Создатель - <strong><%= @event.creator.name %></strong>
+<% if @event.creator %>
+	<h5>Создатель - <strong><%= link_to @event.creator.name, @event.creator %></strong>
+<% end %>
 	<br>
 	<br>
-	<%= link_to "Создать свое событие", new_event_path, class: "delete_user" %>   
+	<%= link_to "Создать свое событие", new_event_path, class: "delete_user" %> 
+	
+	<% if current_user == @event.creator %>
+	| 
+	
+	<%= form_tag("/invite", method: "post", class: "invite") do %>
+		<%= hidden_field_tag :id, @event.id %>
+		<%= text_field_tag :name, current_user.name, placeholder: "Имя пользователя" %>
+		<%= submit_tag "Пригласить!", id: @event.id, class: "delete_user" %>
+	<% end %>
+	<% end %>
+
+
 </h5>
 
 <% if @event.attendees.exists? %>
 <div class="container">
 	<div class="row">
 		<h3 class="col-md-8 col-md-offset-2 col-xs-12">Участники события:</h3>
+		<% if @event.creator %>
 		<div class="col-md-8 col-md-offset-2 col-xs-12 event upcoming_event">
 			<strong><%= link_to @event.creator.name, @event.creator %></strong>
 		</div>
+		<% end %>
 		<% attendees = @event.attendees %>
 		<% attendees.each do |user| %>
 			<div class="col-md-8 col-md-offset-2 col-xs-12 event">
