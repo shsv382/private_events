@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-5 col-md-offset-1 event upcoming_event"> 
 				<strong><%= link_to event.name, event %>
-					(<%= event.attendees.count + 1 %> участников)
+					(<%= attendees_count event %>)
 				</strong>
 				<span class="date">at <%= event.date %></span>
 			</div>
@@ -35,7 +35,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-5 col-md-offset-1 event past_event"> 
 				<strong><%= link_to event.name, event %>
-					(<%= event.attendees.count + 1 %> участников)
+					(<%= attendees_count event %>)
 				</strong>
 				<span class="date">at <%= event.date %></span>
 			</div>

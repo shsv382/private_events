@@ -9,26 +9,6 @@
 	<%= link_to "Другие пользователи", users_path, class: "delete_user" %>
 </h5>
 
-<% if @user.created_events.exists? %>
-<div class="container">
-	<div class="row">
-		<h3 class="col-md-8 col-md-offset-2 col-xs-12">События пользователя:</h3>
-		<% events = @user.created_events.order(date: :desc) %>
-		<% events.each do |event| %>
-			<div class="col-md-8 col-md-offset-2 col-xs-12 event created
-		<%= "upcoming_event" if event.date > Time.now %> 
-			">
-				<strong><%= link_to event.name, event %> (<%= event.attendees.count + 1 %> участников)</strong> at <%= event.date %>
-			</div>
-		<% end %>
-
-<% else %>
-		<h3 class="col-md-8 col-md-offset-2 col-xs-12">У пользователя нет событий</h3>
-
-	</div>
-</div>
-<% end %>
-
 <% if @user.attended_events.exists? %>
 <div class="container">
 	<div class="row">
@@ -36,9 +16,10 @@
 		<% events = @user.attended_events.order(date: :desc) %>
 		<% events.each do |event| %>
 			<div class="col-md-8 col-md-offset-2 col-xs-12 event
+		<%= "created" if event.creator == @user %>
 		<%= "upcoming_event" if event.date > Time.now %> 
 			">
-				<strong><%= link_to event.name, event %> (<%= event.attendees.count + 1 %> участников)</strong> at <%= event.date %>
+				<strong><%= link_to event.name, event %> (<%= attendees_count event %>)</strong> at <%= event.date %>
 			</div>
 		<% end %>
 
